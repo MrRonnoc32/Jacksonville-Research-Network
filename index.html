@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacksonville Research Network</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            color: #00539b;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #00539b;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #00539b 0%, #0077be 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #00539b;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Mission Section */
+        .mission {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .mission-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mission h3 {
+            color: #00539b;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mission p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Focus Areas Section */
+        .focus-areas {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .focus-areas h3 {
+            text-align: center;
+            color: #00539b;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .area-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .area-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .area-card h4 {
+            color: #00539b;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .area-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Journal Section */
+        .journal-section {
+            background: #00539b;
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .journal-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .journal-section h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .journal-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .button-secondary {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border: 2px solid white;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .button-secondary:hover {
+            background: white;
+            color: #00539b;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #00539b;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            text-align: center;
+            color: #888;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .mission h3,
+            .focus-areas h3,
+            .journal-section h3 {
+                font-size: 2rem;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1rem 2rem;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #00539b;
+        }
+
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stats Counter */
+        .stats-section {
+            background: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-item {
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #00539b;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('header');
+            const nav = document.querySelector('nav');
+            const mobileToggle = document.createElement('button');
+            mobileToggle.className = 'mobile-menu-toggle';
+            mobileToggle.innerHTML = '☰';
+            mobileToggle.setAttribute('aria-label', 'Toggle menu');
+
+            const logo = document.querySelector('.logo');
+            logo.parentNode.insertBefore(mobileToggle, nav);
+
+            mobileToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+                mobileToggle.innerHTML = nav.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Scroll Animation
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+            // Smooth Scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        nav.classList.remove('active');
+                        mobileToggle.innerHTML = '☰';
+                    }
+                });
+            });
+
+            // Stats Counter Animation
+            function animateCounter(element, target, duration = 2000) {
+                const start = 0;
+                const increment = target / (duration / 16);
+                let current = start;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    element.textContent = Math.floor(current).toLocaleString();
+                }, 16);
+            }
+
+            const statsObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                        entry.target.classList.add('counted');
+                        const target = parseInt(entry.target.getAttribute('data-target'));
+                        animateCounter(entry.target, target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.stat-number').forEach(el => statsObserver.observe(el));
+
+            // Header Shadow on Scroll
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 4px 8px rgba(0,0,0,0.15)';
+                } else {
+                    header.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+                }
+            });
+        });
+    </script>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Jacksonville Research Network</h1>
+                <p>Research Arm of the Jacksonville Civic Council</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#journal">Journal</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Strategic Research for a World-Class Jacksonville</h2>
+            <p>Empowering policy advocacy and execution through data-driven insights and rigorous analysis</p>
+            <a href="#research" class="cta-button">Explore Our Research</a>
+        </div>
+    </section>
+
+    <section class="mission">
+        <div class="mission-content fade-in">
+            <h3>Our Mission</h3>
+            <p>The Jacksonville Research Network conducts strategic research to support the Jacksonville Civic Council's vision of making Jacksonville a world-class destination of choice for families, individuals, graduates, and businesses. Through rigorous analysis and evidence-based insights, we provide the foundation for informed policy advocacy and effective execution.</p>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <h3 style="color: #00539b; font-size: 2.5rem; margin-bottom: 2rem;">2030 Targets</h3>
+        <div class="stats-container">
+            <div class="stat-item fade-in">
+                <div class="stat-number" data-target="25">0</div>
+                <div class="stat-label">Research Projects</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number" data-target="10">0</div>
+                <div class="stat-label">Publications</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number" data-target="300">0</div>
+                <div class="stat-label">Expert Contributors</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number" data-target="35">0</div>
+                <div class="stat-label">Policy Recommendations</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="focus-areas" id="research">
+        <h3 class="fade-in">Research Focus Areas</h3>
+        <p class="fade-in" style="text-align: center; max-width: 900px; margin: 0 auto 3rem; color: #555; font-size: 1.1rem;">
+            Aligned with the Oxford Global Cities Index framework, our research evaluates Jacksonville across five critical dimensions to benchmark our progress toward becoming a world-class city.
+        </p>
+        <div class="areas-grid">
+            <div class="area-card fade-in">
+                <h4>Economics</h4>
+                <p>Analyzing GDP growth, economic diversity, employment trends, and per capita income to assess Jacksonville's economic vitality and potential for sustained prosperity.</p>
+            </div>
+            <div class="area-card fade-in">
+                <h4>Human Capital</h4>
+                <p>Examining educational attainment, university presence, corporate headquarters, demographic trends, and talent attraction to evaluate Jacksonville's workforce competitiveness.</p>
+            </div>
+            <div class="area-card fade-in">
+                <h4>Quality of Life</h4>
+                <p>Researching life expectancy, income levels, housing affordability, cultural amenities, and infrastructure to measure the wellbeing and satisfaction of Jacksonville residents.</p>
+            </div>
+            <div class="area-card fade-in">
+                <h4>Environment</h4>
+                <p>Studying air quality, emissions intensity, climate resilience, and natural disaster preparedness to ensure Jacksonville's environmental sustainability and livability.</p>
+            </div>
+            <div class="area-card fade-in">
+                <h4>Governance</h4>
+                <p>Evaluating institutional strength, political stability, business environment, and civil liberties to assess the foundation for Jacksonville's long-term prosperity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="journal-section">
+        <div class="journal-content">
+            <h3>Jacksonville Research Journal</h3>
+            <p>Our peer-reviewed journal publishes cutting-edge research on issues critical to Jacksonville's future. Featuring contributions from leading scholars, practitioners, and policy experts.</p>
+            <a href="#journal" class="button-secondary">Access the Journal</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Jacksonville Research Network</h4>
+                <p>Research Arm of the Jacksonville Civic Council</p>
+                <p>Making Jacksonville a world-class destination through strategic research and evidence-based insights.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <p><a href="#about">About Us</a></p>
+                <p><a href="#research">Research Projects</a></p>
+                <p><a href="#journal">Research Journal</a></p>
+                <p><a href="#contact">Contact</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <p>Email: research@jaxciviccouncil.org</p>
+                <p>Phone: (904) XXX-XXXX</p>
+                <p>Jacksonville, Florida</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Jacksonville Research Network. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
